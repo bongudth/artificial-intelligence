@@ -1,4 +1,4 @@
-def BFS_SP(graph, initalState, goal):
+def DFS_SP(graph, initalState, goal):
     frontier = [[initalState]]
     explored = []
 
@@ -7,7 +7,7 @@ def BFS_SP(graph, initalState, goal):
         return
 
     while frontier:
-        path = frontier.pop(0)
+        path = frontier.pop(len(frontier) - 1)
         node = path[-1]
 
         if node not in explored:
@@ -40,4 +40,4 @@ if __name__ == "__main__":
         'H': ['G']
     }
 
-    BFS_SP(graph, 'S', 'G')
+    DFS_SP(graph, 'S', 'G')
