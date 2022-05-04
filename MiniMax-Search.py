@@ -4,22 +4,22 @@ from TreeNode import Tree
 def max_value(node):
     if len(node.children) == 0:
         return node
-    node.goal_cost = -10000
+    node.value = -10000
     for child in node.children:
         temp = min_value(child)
-        if temp.goal_cost > node.goal_cost:
-            node.goal_cost = temp.goal_cost
+        if temp.value > node.value:
+            node.value = temp.value
     return node
 
 
 def min_value(node):
     if len(node.children) == 0:
         return node
-    node.goal_cost = 10000
+    node.value = 10000
     for child in node.children:
         temp = max_value(child)
-        if temp.goal_cost < node.goal_cost:
-            node.goal_cost = temp.goal_cost
+        if temp.value < node.value:
+            node.value = temp.value
     return node
 
 
@@ -57,14 +57,14 @@ if __name__ == "__main__":
     F.add_child(N)
     G.add_child(L)
     G.add_child(Z)
-    H.goal_cost = 2
-    I.goal_cost = 9
-    J.goal_cost = 7
-    K.goal_cost = 4
-    M.goal_cost = 8
-    N.goal_cost = 9
-    L.goal_cost = 3
-    Z.goal_cost = 5
+    H.value = 2
+    I.value = 9
+    J.value = 7
+    K.value = 4
+    M.value = 8
+    N.value = 9
+    L.value = 3
+    Z.value = 5
 
     minimax_search(A)
-    print(A.goal_cost)
+    print(A.value)
