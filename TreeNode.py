@@ -1,7 +1,7 @@
 class Tree:
-    def __init__(self, data, goal_cost=10000):
+    def __init__(self, data, value=10000):
         self.data = data
-        self.goal_cost = goal_cost
+        self.value = value
         self.children = []
         self.parent = None
 
@@ -19,4 +19,4 @@ class Tree:
         return self.parent
 
     def __lt__(self, other):
-        return self.goal_cost < other.goal_cost
+        return self.value < other.value
