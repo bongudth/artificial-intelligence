@@ -1,6 +1,5 @@
 import heapq
 
-
 class Node:
     def __init__(self, label, goal_cost):
         self.label = label
@@ -34,7 +33,6 @@ class Node:
 
     def neighbors(self):
         return self.children + self.parent
-
 
 class Tree:
     def __init__(self):
@@ -78,13 +76,11 @@ class Tree:
         except:
             return None
 
-
 def update_cost(tree, current_node, prev_node):
     if tree.get_edge(prev_node, current_node) is not None:
         if current_node.cost > prev_node.cost + tree.get_edge(prev_node, current_node)[2]:
             current_node.cost = prev_node.cost + \
                 tree.get_edge(prev_node, current_node)[2]
-
 
 def a_star(tree, start, end):
     frontier = [start]
@@ -101,7 +97,6 @@ def a_star(tree, start, end):
             if child.get_label() not in list(set(node.get_label() for node in frontier + explored)):
                 heapq.heappush(frontier, child)
     return False
-
 
 if __name__ == "__main__":
     tree = Tree()
