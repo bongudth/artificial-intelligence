@@ -1,6 +1,5 @@
 from TreeNode import Tree
 
-
 def max_value(node, alpha, beta):
     if len(node.children) == 0:
         return node
@@ -14,7 +13,6 @@ def max_value(node, alpha, beta):
         if child.value > alpha:
             alpha = child.value
     return node
-
 
 def min_value(node, alpha, beta):
     if len(node.children) == 0:
@@ -30,10 +28,8 @@ def min_value(node, alpha, beta):
             beta = child.value
     return node
 
-
 def alpha_beta_search(state):
     max_value(state, -10000, 10000)
-
 
 if __name__ == "__main__":
     A = Tree("A")
@@ -75,4 +71,4 @@ if __name__ == "__main__":
     Z.value = 5
 
     alpha_beta_search(A)
-    print(A.value) 
+    print(A.value)
