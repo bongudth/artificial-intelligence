@@ -1,6 +1,5 @@
 from TreeNode import Tree
 
-
 def max_value(node):
     if len(node.children) == 0:
         return node
@@ -10,7 +9,6 @@ def max_value(node):
         if temp.value > node.value:
             node.value = temp.value
     return node
-
 
 def min_value(node):
     if len(node.children) == 0:
@@ -22,10 +20,8 @@ def min_value(node):
             node.value = temp.value
     return node
 
-
 def minimax_search(state):
     max_value(state)
-
 
 if __name__ == "__main__":
     A = Tree("A")
