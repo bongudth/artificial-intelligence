@@ -89,7 +89,7 @@ def a_star(tree, start, end):
     while len(frontier) > 0:
         state = heapq.heappop(frontier)
         explored.append(state)
-        print(state)
+        # print(state)
         if state == end:
             return explored
         for child in state.neighbors():
@@ -99,45 +99,59 @@ def a_star(tree, start, end):
     return False
 
 if __name__ == "__main__":
+    V = [
+        Node("S", 12),  # 0
+        Node("A", 9),   # 1
+        Node("B", 8),   # 2
+        Node("C", 7),   # 3
+        Node("D", 6),   # 4
+        Node("E", 5),   # 5
+        Node("F", 4),   # 6
+        Node("G", 10),  # 7
+        Node("H", 10),  # 8
+        Node("K", 3),   # 9
+        Node("M", 9),   # 10
+        Node("N", 10),  # 11
+        Node("I", 6),   # 12
+        Node("J", 0),   # 13
+        Node("L", 0),   # 14
+        Node("Z", 8)    # 15
+    ]
+    E = [
+        ("S", "A", 5),
+        ("B", "B", 6),
+        ("S", "C", 5),
+        ("A", "D", 6),
+        ("A", "E", 7),
+        ("B", "F", 3),
+        ("B", "G", 4),
+        ("C", "H", 6),
+        ("C", "K", 4),
+        ("D", "M", 5),
+        ("D", "N", 8),
+        ("E", "I", 8),
+        ("F", "J", 4),
+        ("F", "L", 4),
+        ("K", "Z", 2),
+    ]
     tree = Tree()
-    tree.add_nodes([
-        Node("A", 6),
-        Node("B", 3),
-        Node("C", 4),
-        Node("D", 5),
-        Node("E", 3),
-        Node("F", 1),
-        Node("G", 6),
-        Node("H", 2),
-        Node("I", 5),
-        Node("J", 4),
-        Node("K", 2),
-        Node("L", 0),
-        Node("M", 4),
-        Node("N", 0),
-        Node("O", 4)
-    ])
-    tree.add_edges([
-        ("A", "B", 2),
-        ("A", "C", 1),
-        ("A", "D", 3),
-        ("B", "E", 5),
-        ("B", "F", 4),
-        ("C", "G", 6),
-        ("C", "H", 3),
-        ("D", "I", 2),
-        ("D", "J", 4),
-        ("F", "K", 2),
-        ("F", "L", 1),
-        ("F", "M", 4),
-        ("H", "N", 2),
-        ("H", "O", 4),
-    ])
+    tree.add_nodes(V)
+    tree.add_edges(E)
     tree.nodes[0].cost = 0
-    result = a_star(tree, tree.nodes[0], tree.nodes[14])
-    if result:
+    print('Path from S to J:', end='\n')
+    resultJ = a_star(tree, tree.nodes[0], tree.nodes[13])
+    if resultJ:
         s = 'explored: '
-        for i in result:
+        for i in resultJ:
+            s += i.label + " "
+            print(s)
+    else:
+        print('Path does not exist!')
+    print('Path from S to L:', end='\n')
+    resultL = a_star(tree, tree.nodes[0], tree.nodes[14])
+    if resultL:
+        s = 'explored: '
+        for i in resultL:
             s += i.label + " "
             print(s)
     else:
